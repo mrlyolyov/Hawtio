@@ -171,10 +171,10 @@ class JolokiaService implements IJolokiaService {
       // Checking versions
       jolokia.version(
         onVersionSuccessAndError(
-          version => {
+          (          version: { agent: any }) => {
             log.info('Jolokia version:', { client: jolokia.CLIENT_VERSION, agent: version.agent })
           },
-          error => log.error('Failed to fetch Jolokia version:', error),
+          (          error: any) => log.error('Failed to fetch Jolokia version:', error),
         ),
       )
       // Start Jolokia
@@ -496,7 +496,7 @@ class JolokiaService implements IJolokiaService {
 
     return new Promise((resolve, reject) => {
       // Override ajaxError to make sure it terminates in case of ajax error
-      options.ajaxError = (xhr, text, error) => {
+      options.ajaxError = (xhr: any, text: any, error: any) => {
         ajaxError?.(xhr, text, error)
         reject(error)
       }
@@ -510,14 +510,14 @@ class JolokiaService implements IJolokiaService {
         case JolokiaListMethod.OPTIMISED: {
           log.debug('Invoke Jolokia list MBean in optimised mode:', paths)
           const execOptions = onExecuteSuccessAndError(
-            value => {
+            (            value: unknown) => {
               // For empty or single list, the first path should be enough
               const path = paths?.[0]?.split('/')
               const domains = this.unwindListResponse(value, path)
               success?.(domains)
               resolve(domains)
             },
-            error => {
+            (            error: any) => {
               errorFn?.(error)
               reject(error)
             },
@@ -545,14 +545,14 @@ class JolokiaService implements IJolokiaService {
         default: {
           log.debug('Invoke Jolokia list MBean in default mode:', paths)
           const listOptions = onListSuccessAndError(
-            value => {
+            (            value: unknown) => {
               // For empty or single list, the first path should be enough
               const path = paths?.[0]?.split('/')
               const domains = this.unwindListResponse(value, path)
               success?.(domains)
               resolve(domains)
             },
-            error => {
+            (            error: any) => {
               errorFn?.(error)
               reject(error)
             },
@@ -650,14 +650,14 @@ class JolokiaService implements IJolokiaService {
     jolokia.request(
       requests,
       onBulkSuccessAndError(
-        response => {
+        (        response: any) => {
           bulkResponse.push(response)
           // Resolve only when all the responses from the bulk request are collected
           if (bulkResponse.length === requests.length) {
             mergeResponses()
           }
         },
-        error => {
+        (        error: any) => {
           log.error('Error during bulk list:', error)
           bulkResponse.push(error)
           // Resolve only when all the responses from the bulk request are collected
@@ -692,8 +692,8 @@ class JolokiaService implements IJolokiaService {
       jolokia.request(
         { type: 'read', mbean },
         onSuccessAndError(
-          response => resolve(response.value as AttributeValues),
-          error => {
+          (          response: { value: AttributeValues }) => resolve(response.value as AttributeValues),
+          (          error: any) => {
             log.error('Error during readAttributes:', error)
             resolve({})
           },
@@ -708,8 +708,8 @@ class JolokiaService implements IJolokiaService {
       jolokia.request(
         { type: 'read', mbean, attribute },
         onSuccessAndError(
-          response => resolve(response.value as unknown),
-          error => {
+          (          response: { value: unknown }) => resolve(response.value as unknown),
+          (          error: any) => {
             log.error('Error during readAttribute:', error)
             resolve(null)
           },
@@ -724,8 +724,8 @@ class JolokiaService implements IJolokiaService {
       jolokia.request(
         { type: 'write', mbean, attribute, value },
         onSuccessAndError(
-          response => resolve(response.value as unknown),
-          error => {
+          (          response: { value: unknown }) => resolve(response.value as unknown),
+          (          error: any) => {
             log.error('Error during writeAttribute:', error)
             resolve(null)
           },
@@ -742,8 +742,8 @@ class JolokiaService implements IJolokiaService {
         operation,
         ...args,
         onExecuteSuccessAndError(
-          response => resolve(response),
-          error => reject(error.stacktrace || error.error),
+          (          response: unknown) => resolve(response),
+          (          error: { stacktrace: any; error: any }) => reject(error.stacktrace || error.error),
         ),
       )
     })
@@ -755,8 +755,8 @@ class JolokiaService implements IJolokiaService {
       jolokia.search(
         mbeanPattern,
         onSearchSuccessAndError(
-          response => resolve(response as string[]),
-          error => {
+          (          response: string[]) => resolve(response as string[]),
+          (          error: any) => {
             log.error('Error during search:', error)
             resolve([])
           },
@@ -772,14 +772,14 @@ class JolokiaService implements IJolokiaService {
       jolokia.request(
         requests,
         onBulkSuccessAndError(
-          response => {
+          (          response: any) => {
             bulkResponse.push(response)
             // Resolve only when all the responses from the bulk request are collected
             if (bulkResponse.length === requests.length) {
               resolve(bulkResponse)
             }
           },
-          error => {
+          (          error: any) => {
             log.error('Error during bulkRequest:', error)
             bulkResponse.push(error)
             // Resolve only when all the responses from the bulk request are collected
