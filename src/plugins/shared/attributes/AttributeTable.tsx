@@ -65,7 +65,7 @@ export const AttributeTable: React.FunctionComponent = () => {
 
       const mbean = node.objectName
       attributeService.register({ type: 'read', mbean }, (response: Response) => {
-        setAttributesList(attributesList => {
+        setAttributesList((attributesList: { [x: string]: AttributeValues }) => {
           attributesList[mbean] = response.value as AttributeValues
           return { ...attributesList }
         })
@@ -106,20 +106,20 @@ export const AttributeTable: React.FunctionComponent = () => {
   const labels = Object.keys(attributesEntries[0] ?? {})
 
   return (
-    <Panel>
-      <TableComposable aria-label='MBeans' variant='compact'>
-        <Thead>
-          <Tr>
+    <Panel onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+      <TableComposable aria-label='MBeans' variant='compact' onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+        <Thead onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+          <Tr onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             {labels.map(label => (
-              <Th key={'header-' + label}>{humanizeLabels(label)}</Th>
+              <Th key={'header-' + label} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{humanizeLabels(label)}</Th>
             ))}
           </Tr>
         </Thead>
-        <Tbody>
+        <Tbody onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
           {attributesEntries.map((attribute, index) => (
-            <Tr key={'attribute-' + index}>
+            <Tr key={'attribute-' + index} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
               {labels.map((label, index) => (
-                <Td key={'data-' + label + index}>{JSON.stringify(attribute[label])}</Td>
+                <Td key={'data-' + label + index} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{JSON.stringify(attribute[label])}</Td>
               ))}
             </Tr>
           ))}
