@@ -1,0 +1,12 @@
+/*.js
+!/packages/hawtio/scripts/*.js
+/*.cjs
+/app/*.js
+/app/*.cjs
+/**/ignore/**
+
+jest.config.ts
+tsup.config.ts
+
+dist/
+build/

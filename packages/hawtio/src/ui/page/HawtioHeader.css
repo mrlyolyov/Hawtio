@@ -1,0 +1,24 @@
+#hawtio-header-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--pf-global--Color--light-200);
+}
+
+#hawtio-header-brand .pf-c-brand {
+  max-height: 50px;
+  margin-right: 1em;
+}
+
+#hawtio-header-toolbar .pf-c-toolbar__content-section {
+  justify-content: end;
+}
+
+#hawtio-header-user-dropdown-toggle {
+  display: flex;
+}
+
+#hawtio-header-user-dropdown-toggle .pf-c-dropdown__toggle-text {
+  margin-left: 5px;
+}
