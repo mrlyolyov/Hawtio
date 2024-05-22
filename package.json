@@ -13,7 +13,7 @@
     "app"
   ],
   "files": [
-	"packages"
+	"packages/*"
   ],
   "scripts": {
     "start": "concurrently -n hawtio,app \"yarn build:hawtio:watch\" \"yarn start:app\"",
