@@ -12,6 +12,9 @@
     "packages/*",
     "app"
   ],
+  "files": [
+	"packages"
+  ],
   "scripts": {
     "start": "concurrently -n hawtio,app \"yarn build:hawtio:watch\" \"yarn start:app\"",
     "start:app": "yarn build:backend-middleware && yarn workspace app start",

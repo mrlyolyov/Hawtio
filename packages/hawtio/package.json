@@ -7,7 +7,8 @@
   "author": "Hawtio developer team",
   "license": "Apache-2.0",
   "files": [
-    "dist"
+    "dist",
+	"src"
   ],
   "repository": {
     "type": "git",
