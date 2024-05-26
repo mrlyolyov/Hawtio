@@ -70,7 +70,6 @@
       "maxLineWidth": 80
     }
   },
-  "packageManager": "yarn@4.2.1",
   "engines": {
     "yarn": ">=4"
   }
