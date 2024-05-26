@@ -6,8 +6,10 @@
   "license": "Apache-2.0",
   "files": [
 	"packages/*",
-	"packages/hawtio",
-	"app"
+	"packages/hawtio/*",
+	"app",
+	"dist",
+	"src"
   ],
   "repository": {
     "type": "git",
@@ -15,6 +17,7 @@
   },
   "workspaces": [
     "packages/*",
+	"node_modules/@hawtio/next-root",
     "app"
   ],
   "scripts": {
