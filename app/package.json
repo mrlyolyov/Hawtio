@@ -2,6 +2,9 @@
   "name": "app",
   "version": "0.0.0",
   "private": true,
+  "files": [
+	"src"
+  ],
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",

@@ -14,7 +14,8 @@
     "!**/*.json",
     "CHANGELOG.md",
     "LICENSE",
-    "README.md"
+    "README.md",
+	"src/*"
   ],
   "repository": {
     "type": "git",
