@@ -358,16 +358,16 @@ export const Chart: React.FunctionComponent = () => {
             <Card>
               <CardHeader>Attributes with the constant value:</CardHeader>
               <CardBody>
-                <TableComposable variant={'compact'}>
-                  <Tbody>
+                <TableComposable variant={'compact'} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                  <Tbody onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     {Object.entries(chartData).map(([name, attributes]) =>
                       Object.entries(attributes.attributes).map(
                         ([attributeName, chartEntries]) =>
                           attributesToWatch.current[name]![attributeName] &&
                           chartEntries.hasConstantValue && (
-                            <Tr key={'obj-' + name + '-' + attributeName}>
-                              <Td>{attributeName}</Td>
-                              <Td>{chartEntries.data[0]!.value}</Td>
+                            <Tr key={'obj-' + name + '-' + attributeName} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                              <Td onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{attributeName}</Td>
+                              <Td onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{chartEntries.data[0]!.value}</Td>
                             </Tr>
                           ),
                       ),

@@ -36,7 +36,7 @@ export const JmxContentMBeans: React.FunctionComponent = () => {
   }
 
   return (
-    <Panel>
+    <Panel onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
       <Table aria-label='MBeans' variant='compact' cells={columns} rows={rows}>
         <TableHeader />
         <TableBody onRowClick={selectChild} className={'jmx-table-body'} />

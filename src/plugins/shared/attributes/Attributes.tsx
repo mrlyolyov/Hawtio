@@ -102,14 +102,14 @@ export const Attributes: React.FunctionComponent = () => {
 
   const attributesTable = (
     <div id='attribute-table-with-panel'>
-      <TableComposable aria-label='Attributes' variant='compact'>
-        <Thead>
-          <Tr>
-            <Th sort={getSortParams()}>Attribute</Th>
-            <Th>Value</Th>
+      <TableComposable aria-label='Attributes' variant='compact' onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+        <Thead onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+          <Tr onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <Th sort={getSortParams()} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Attribute</Th>
+            <Th onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>Value</Th>
           </Tr>
         </Thead>
-        <Tbody>
+        <Tbody onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
           {rows
             .sort((a, b) => objectSorter(a.name, b.name, sortDirection === 'desc'))
             .map((att, index) => (
@@ -117,10 +117,9 @@ export const Attributes: React.FunctionComponent = () => {
                 key={att.name + '-' + index}
                 isHoverable
                 isRowSelected={selected.name === att.name}
-                onRowClick={() => selectAttribute(att)}
-              >
-                <Td>{att.name}</Td>
-                <Td>{att.value}</Td>
+                onRowClick={() => selectAttribute(att)} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}              >
+                <Td onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{att.name}</Td>
+                <Td onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{att.value}</Td>
               </Tr>
             ))}
         </Tbody>
@@ -128,7 +127,7 @@ export const Attributes: React.FunctionComponent = () => {
     </div>
   )
   return (
-    <Panel>
+    <Panel onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
       <Drawer isExpanded={isModalOpen} className={'pf-m-inline-on-2xl'}>
         <DrawerContent panelContent={panelContent}>
           <DrawerContentBody hasPadding> {attributesTable}</DrawerContentBody>

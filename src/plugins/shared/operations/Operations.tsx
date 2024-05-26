@@ -31,7 +31,7 @@ export const Operations: React.FunctionComponent = () => {
   )
 
   return (
-    <Panel>
+    <Panel onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
       <PanelHeader>
         <Text component='p'>
           This MBean supports the following JMX operations. Expand an item in the list to invoke that operation.
