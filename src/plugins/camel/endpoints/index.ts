@@ -1,1 +1,0 @@
-export { Endpoints } from './Endpoints'
