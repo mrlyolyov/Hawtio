@@ -7,7 +7,10 @@
   "author": "Hawtio developer team",
   "license": "Apache-2.0",
   "files": [
-    "dist"
+    "dist",
+	"src",
+	"scripts",
+	"jest.config.ts"
   ],
   "repository": {
     "type": "git",
