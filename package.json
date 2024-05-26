@@ -8,9 +8,7 @@
   "license": "Apache-2.0",
   "files": [
     "dist",
-	"src",
-	"scripts",
-	"jest.config.ts"
+	"src"
   ],
   "repository": {
     "type": "git",
